@@ -2,8 +2,10 @@
   "name": "projeto02",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx  watch src/server.ts",
+    "lint": "eslint src --ext .ts --fix"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,20 @@
   "homepage": "https://github.com/gzwirtes/projeto02#readme",
   "description": "",
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "@eslint/js": "^9.30.1",
+    "@rocketseat/eslint-config": "^2.2.2",
+    "@types/node": "^24.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.35.1",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.1"
+  },
+  "dependencies": {
+    "fastify": "^5.4.0"
   }
 }
