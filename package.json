@@ -2,9 +2,9 @@
   "name": "projeto02",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "dev": "tsx  watch src/server.ts",
+    "dev": "tsx watch src/server.ts",
+    "knex": "tsx ./node_modules/.bin/knex",
     "lint": "eslint src --ext .ts --fix"
   },
   "repository": {
@@ -34,6 +34,7 @@
     "typescript-eslint": "^8.35.1"
   },
   "dependencies": {
+    "dotenv": "^17.0.1",
     "fastify": "^5.4.0",
     "knex": "^3.1.0",
     "sqlite3": "^5.1.7"
