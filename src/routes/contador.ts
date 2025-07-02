@@ -4,6 +4,30 @@ import { z } from "zod";
 import bcrypt from 'bcrypt'
 
 export async function contadorRoutes(app: FastifyInstance) {
+	app.get("/", async () => {
+		const contador = await knex("contador").select()
+
+		return { contador }
+	});
+
+	app.get("/:id", async (request) => {
+		const getContadorParamsSchema = z.object({
+			id: z.string(),
+		})
+
+		const { id } = getContadorParamsSchema.parse(request.params)
+
+		const contador = await knex("contador").select().where("id", id).first()
+
+		return { contador }
+	});
+
+	app.get("/summary", async (request) => {
+		const summary = await knex("contador").count('id', { as: 'total' }).first()
+
+		return { summary }
+	});
+
 	app.post("/", async (request, reply) => {
 		const createContadorBodySchema = z.object({
 			nome: z.string(),
@@ -21,10 +45,4 @@ export async function contadorRoutes(app: FastifyInstance) {
 
 		return reply.status(201).send()
 	});
-
-	app.get("/tables", async () => {
-    const tables = await knex("sqlite_schema").select("*")
-
-    return tables
-  });
 }
